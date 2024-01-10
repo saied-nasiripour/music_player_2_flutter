@@ -1,0 +1,2 @@
+
+class PlayerController extends GetXController {}
