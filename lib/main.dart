@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_player_2_flutter/controllers/permission_controller.dart';
 import 'package:music_player_2_flutter/controllers/player_controller.dart';
+import 'package:music_player_2_flutter/core/constants/palette.dart';
 import 'package:music_player_2_flutter/views/home.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "regular",
         appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.transparent, elevation: 0),
+            backgroundColor: Palette.bgDarkColor, elevation: 0),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

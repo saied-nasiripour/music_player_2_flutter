@@ -4,6 +4,7 @@ import 'package:music_player_2_flutter/controllers/permission_controller.dart';
 import 'package:music_player_2_flutter/controllers/player_controller.dart';
 import 'package:music_player_2_flutter/core/constants/palette.dart';
 import 'package:music_player_2_flutter/core/constants/text_style.dart';
+import 'package:music_player_2_flutter/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class Home extends StatelessWidget {
@@ -93,7 +94,8 @@ class Home extends StatelessWidget {
                                         : const SizedBox();
                                   }),
                                   onTap: () {
-                                    playerController.playSong(song.uri, index);
+                                    //playerController.playSong(song.uri, index);
+                                    Get.to(() => const Player());
                                   },
                                 ),
                               );
