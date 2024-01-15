@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:music_player_2_flutter/controllers/permission_controller.dart';
+import 'package:music_player_2_flutter/controllers/player_controller.dart';
 import 'package:music_player_2_flutter/views/home.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Get.put(PermissionController());
+  Get.put(PlayerController());
   runApp(const MyApp());
 }
 
@@ -11,9 +17,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'music_player_2_flutter',
+      title: 'SNP_Music_Player_2_flutter',
       theme: ThemeData(
         fontFamily: "regular",
         appBarTheme: const AppBarTheme(
@@ -21,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: Home(),
     );
   }
 }
