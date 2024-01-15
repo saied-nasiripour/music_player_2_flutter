@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:music_player_2_flutter/core/constants/palette.dart';
 import 'package:music_player_2_flutter/core/constants/text_style.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class Player extends StatelessWidget {
-  const Player({Key? key}) : super(key: key);
+  const Player({Key? key, required this.songModel}) : super(key: key);
+  final SongModel songModel;
 
   @override
   Widget build(BuildContext context) {

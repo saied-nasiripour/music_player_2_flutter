@@ -11,7 +11,8 @@ class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
 
   final permissionController = Get.find<PermissionController>();
-  final playerController = Get.find<PlayerController>(); // Access the controller
+  final playerController =
+      Get.find<PlayerController>(); // Access the controller
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +57,7 @@ class Home extends StatelessWidget {
                             physics: const BouncingScrollPhysics(),
                             itemCount: songs.length,
                             itemBuilder: (context, index) {
-                              final song = songs[index];
+                              final SongModel song = songs[index];
                               return Container(
                                 margin: const EdgeInsets.only(bottom: 4.0),
                                 child: ListTile(
@@ -87,15 +88,17 @@ class Home extends StatelessWidget {
                                     ),
                                   ),
                                   trailing: Obx(() {
-                                    return playerController.playIndex.value == index && playerController.isPlaying.value
+                                    return playerController.playIndex.value ==
+                                                index &&
+                                            playerController.isPlaying.value
                                         ? const Icon(Icons.play_arrow,
-                                        color: Palette.whiteColor,
-                                        size: 26.0)
+                                            color: Palette.whiteColor,
+                                            size: 26.0)
                                         : const SizedBox();
                                   }),
                                   onTap: () {
                                     //playerController.playSong(song.uri, index);
-                                    Get.to(() => const Player());
+                                    Get.to(() => Player(songModel: song), transition: Transition.downToUp);
                                   },
                                 ),
                               );
