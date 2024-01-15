@@ -9,10 +9,8 @@ import 'package:on_audio_query/on_audio_query.dart';
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
 
-  //final OnAudioQuery _audioQuery = OnAudioQuery();
   final permissionController = Get.find<PermissionController>();
-  final playerController =
-      Get.find<PlayerController>(); // Access the controller
+  final playerController = Get.find<PlayerController>(); // Access the controller
 
   @override
   Widget build(BuildContext context) {
@@ -87,14 +85,15 @@ class Home extends StatelessWidget {
                                       size: 32.0,
                                     ),
                                   ),
-                                  trailing:
-                                      playerController.playIndex.value == index
-                                          ? const Icon(Icons.play_arrow,
-                                              color: Palette.whiteColor,
-                                              size: 26.0)
-                                          : null,
+                                  trailing: Obx(() {
+                                    return playerController.playIndex.value == index && playerController.isPlaying.value
+                                        ? const Icon(Icons.play_arrow,
+                                        color: Palette.whiteColor,
+                                        size: 26.0)
+                                        : const SizedBox();
+                                  }),
                                   onTap: () {
-                                    playerController.playSong(song.uri);
+                                    playerController.playSong(song.uri, index);
                                   },
                                 ),
                               );

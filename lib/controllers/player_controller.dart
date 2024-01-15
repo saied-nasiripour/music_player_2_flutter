@@ -9,13 +9,14 @@ class PlayerController extends GetxController {
   RxInt playIndex = 0.obs;
   RxBool isPlaying = false.obs;
 
-  playSong(String? uri) {
+  playSong(String? uri, index) {
+    playIndex.value = index;
     try {
       audioPlayer.setAudioSource(
         AudioSource.uri(Uri.parse(uri!)),
       );
       audioPlayer.play();
-      isPlaying(true);
+      isPlaying.value = true;
     } on Exception catch (e){
       if (kDebugMode) {
         print(e.toString());
