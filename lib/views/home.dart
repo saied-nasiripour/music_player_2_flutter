@@ -97,8 +97,8 @@ class Home extends StatelessWidget {
                                         : const SizedBox();
                                   }),
                                   onTap: () {
-                                    //playerController.playSong(song.uri, index);
                                     Get.to(() => Player(songModel: song), transition: Transition.downToUp);
+                                    playerController.playSong(song.uri, index);
                                   },
                                 ),
                               );
