@@ -10,14 +10,25 @@ class PlayerController extends GetxController {
   RxBool isPlaying = false.obs;
   RxString duration = ''.obs;
   RxString position =  ''.obs;
+  RxDouble max  = 0.0.obs;
+  RxDouble value  = 0.0.obs;
+
+
+
+  changeDurationToSeconds(seconds) {
+    var duration = Duration(seconds: seconds);
+    audioPlayer.seek(duration);
+  }
 
 
   updatePosition() {
     audioPlayer.durationStream.listen((event) {
       duration.value = event.toString().split(".")[0];
+      max.value = event!.inSeconds.toDouble();
     });
     audioPlayer.positionStream.listen((event) {
       position.value = event.toString().split(".")[0];
+      value.value = event.inSeconds.toDouble();
     });
   }
 

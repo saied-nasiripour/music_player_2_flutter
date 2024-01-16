@@ -73,22 +73,31 @@ class Player extends StatelessWidget {
                     Obx(
                         () => Row(
                         children: [
+                          // ------------------- Position Time --------------------------
                           Text(playerController.position.value,
                               style: ourTextStyle(color: Palette.bgDarkColor)),
+                          // ------------------- Slider for Seek --------------------------
                           Expanded(
                               child: Slider(
                             thumbColor: Palette.sliderColor,
                             activeColor: Palette.sliderColor,
                             inactiveColor: Palette.bgColor,
-                            value: 0.0,
-                            onChanged: (newValue) {},
+                            min: Duration(seconds: 0).inSeconds.toDouble(),
+                            max: playerController.max.value,
+                            value: playerController.value.value,
+                            onChanged: (newValue) {
+                              playerController.changeDurationToSeconds(newValue.toInt());
+                              newValue = newValue;
+                            },
                           )),
+                          // ------------------- Duration Time --------------------------
                           Text(playerController.duration.value,
                               style: ourTextStyle(color: Palette.bgDarkColor)),
                         ],
                       ),
                     ),
                     const SizedBox(height: 12),
+                    // ------------------- Control Buttons --------------------------
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
