@@ -70,21 +70,23 @@ class Player extends StatelessWidget {
                           size: 20),
                     ),
                     const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        Text("00:00",
-                            style: ourTextStyle(color: Palette.bgDarkColor)),
-                        Expanded(
-                            child: Slider(
-                          thumbColor: Palette.sliderColor,
-                          activeColor: Palette.sliderColor,
-                          inactiveColor: Palette.bgColor,
-                          value: 0.0,
-                          onChanged: (newValue) {},
-                        )),
-                        Text("04:00",
-                            style: ourTextStyle(color: Palette.bgDarkColor)),
-                      ],
+                    Obx(
+                        () => Row(
+                        children: [
+                          Text(playerController.position.value,
+                              style: ourTextStyle(color: Palette.bgDarkColor)),
+                          Expanded(
+                              child: Slider(
+                            thumbColor: Palette.sliderColor,
+                            activeColor: Palette.sliderColor,
+                            inactiveColor: Palette.bgColor,
+                            value: 0.0,
+                            onChanged: (newValue) {},
+                          )),
+                          Text(playerController.duration.value,
+                              style: ourTextStyle(color: Palette.bgDarkColor)),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 12),
                     Row(

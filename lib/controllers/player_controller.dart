@@ -8,6 +8,19 @@ class PlayerController extends GetxController {
   final AudioPlayer audioPlayer = AudioPlayer();
   RxInt playIndex = 0.obs;
   RxBool isPlaying = false.obs;
+  RxString duration = ''.obs;
+  RxString position =  ''.obs;
+
+
+  updatePosition() {
+    audioPlayer.durationStream.listen((event) {
+      duration.value = event.toString().split(".")[0];
+    });
+    audioPlayer.positionStream.listen((event) {
+      position.value = event.toString().split(".")[0];
+    });
+  }
+
 
   playSong(String? uri, index) {
     playIndex.value = index;
@@ -17,10 +30,12 @@ class PlayerController extends GetxController {
       );
       audioPlayer.play();
       isPlaying.value = true;
+      updatePosition();
     } on Exception catch (e){
       if (kDebugMode) {
         print(e.toString());
       }
     }
   }
+
 }
